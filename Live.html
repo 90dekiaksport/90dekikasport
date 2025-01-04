@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 90 Dekika Sport </title>
+    <title>90 Dekika Sport</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #FF0000;
+            background-color: #121212;
             color: #fff;
             direction: rtl;
         }
@@ -47,7 +47,6 @@
         }
         .tab.active {
             background-color: #e62e2e;
-            color: #fff;
         }
         .match-card {
             background-color: #1e1e1e;
@@ -55,7 +54,8 @@
             padding: 15px;
             border-radius: 8px;
         }
-        .match-card .match-header {
+        .match-card .match-header,
+        .news-card .news-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -68,10 +68,6 @@
             align-items: center;
             font-size: 18px;
             margin-bottom: 10px;
-        }
-        .match-card .teams img {
-            width: 50px;
-            height: 50px;
         }
         .match-card .match-time {
             display: flex;
@@ -89,14 +85,36 @@
             font-size: 16px;
             cursor: pointer;
         }
-        .match-card .details {
-            font-size: 14px;
-            color: #fbff0b;
-            display: flex;
-            justify-content: center;
+        .news-section {
+            margin-top: 30px;
         }
-        .icon {
-            margin-left: 5px;
+        .news-section h2 {
+            margin-bottom: 10px;
+        }
+        .news-card {
+            background-color: #1e1e1e;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .news-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+        .news-card .news-content {
+            flex-grow: 1;
+        }
+        .news-card .news-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .news-card .news-text {
+            font-size: 14px;
+            color: #aaa;
         }
         .modal {
             display: none;
@@ -145,90 +163,40 @@
         <div class="header">
             <select>
                 <option>GMT</option>
-                <option>EST </option>
+                <option>EST</option>
             </select>
-            <h1> ዘጠና ደቂቃ ስፖርት </h1>
+            <h1>ዘጠና ደቂቃ ስፖርት</h1>
         </div>
 
         <div class="tabs">
-            <button class="tab">Tomorrow</button>
-            <button class="tab active">Today</button>
-            <button class="tab">Yesterday</button>
+            <button class="tab" onclick="showMatches('tomorrow')">Tomorrow</button>
+            <button class="tab active" onclick="showMatches('today')">Today</button>
+            <button class="tab" onclick="showMatches('yesterday')">Yesterday</button>
         </div>
 
-        <div class="match-card">
-            <div class="match-header">
-                <span>Bein Sports 1 <img src="https://example.com/path_to_your_tv_image.jpg" alt="TV Image" class="tv-image" alt="TV"></span>
-            </div>
-            <div class="teams">
-                <div>
-                    <img src="real.png" alt="ቫሌንሲያ">
-                </div>
-                <span>-</span>
-                <div>
-                    <img src="valen.png" alt="ሪያል ማድሪድ">
-
-                </div>
-            </div>
-            <div class="match-time">
-                <button onclick="openModal('website', 'https://tt.en-yalla.live/albaplayer/on-sport/')">Live</button>
-            </div>
-            <div class="details">
-                <span> Premier League </span>
-            </div>
+        <div id="matches">
+            <!-- Match cards go here dynamically -->
         </div>
 
-        <div class="match-card">
-            <div class="match-header">
-                <span>Bein Sports </span>
-                <span>Website Stream <img class="icon" src="link_icon.png" alt="link"></span>
-            </div>
-            <div class="teams">
-                <div>
-                    <img src="team_a.png" alt="Team A">
-                    <span>Team A</span>
-                </div>
-                <span>-</span>
-                <div>
-                    <img src="team_b.png" alt="Team B">
-                    <span>Team B</span>
+        <div class="news-section">
+            <h2>Latest News</h2>
+            <div class="news-card">
+                <img src="news1.jpg" alt="News 1">
+                <div class="news-content">
+                    <div class="news-title">Match Highlights</div>
+                    <div class="news-text">Catch all the action from today's games...</div>
                 </div>
             </div>
-            <div class="match-time">
-                <button onclick="openModal('website', 'https://tt.en-yalla.live/albaplayer/on-sport/')">Live</button>
-            </div>
-            <div class="details">
-                <span>Friendly Match <img class="icon" src="trophy_icon.png" alt="Trophy"></span>
-                <span>John Doe <img class="icon" src="mic_icon.png" alt="Mic"></span>
-            </div>
-        </div>        
-
-        <!-- Match Card 3 (External Website) -->
-        <div class="match-card">
-            <div class="match-header">
-                <span> Bein Sports</span>
-                <span>Website Stream <img class="icon" src="link_icon.png" alt="Link"></span>
-            </div>
-            <div class="teams">
-                <div>
-                    <img src="Real" alt="ሪያል ማድሪድ">
+            <div class="news-card">
+                <img src="news2.jpg" alt="News 2">
+                <div class="news-content">
+                    <div class="news-title">Transfer News</div>
+                    <div class="news-text">Big moves happening in the transfer market...</div>
                 </div>
-                <span>-</span>
-                <div>
-                    <img src="Valen.png" alt="ቫሌንሲያ">
-                </div>
-            </div>
-            <div class="match-time">
-                <button onclick="openModal('website', 'https://tt.en-yalla.live/albaplayer/en2-shoot/')">Live</button>
-            </div>
-            <div class="details">
-                <span>Championship <img class="icon" src="trophy_icon.png" alt="Trophy"></span>
-                <span>Jane Smith <img class="icon" src="mic_icon.png" alt="Mic"></span>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
     <div class="modal" id="videoModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">×</button>
@@ -236,33 +204,33 @@
         </div>
     </div>
 
-    <script async src="https://platform.twitter.com/widgets.js"></script>
     <script>
+        function showMatches(day) {
+            const matches = {
+                today: "Today's matches content...",
+                tomorrow: "Tomorrow's matches content...",
+                yesterday: "Yesterday's matches content...",
+            };
+
+            document.getElementById('matches').innerText = matches[day];
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.tab:contains(${day.charAt(0).toUpperCase() + day.slice(1)})`).classList.add('active');
+        }
+
         function openModal(type, source) {
             const modal = document.getElementById('videoModal');
             const modalBody = document.getElementById('modalBody');
             modal.style.display = 'flex';
-
-            // Clear previous content
-            modalBody.innerHTML = '';
-
-            if (type === 'youtube') {
-                modalBody.innerHTML = `<iframe src="${source}" allowfullscreen></iframe>`;
-            } else if (type === 'twitter') {
-                twttr.widgets.createVideo(source, modalBody, { theme: 'dark' });
-            } else if (type === 'website') {
-                modalBody.innerHTML = `<iframe src="${source}" allowfullscreen></iframe>`;
-            }
+            modalBody.innerHTML = `<iframe src="${source}" allowfullscreen></iframe>`;
         }
 
         function closeModal() {
             const modal = document.getElementById('videoModal');
-            const modalBody = document.getElementById('modalBody');
             modal.style.display = 'none';
-
-            // Clear modal content
-            modalBody.innerHTML = '';
         }
+
+        // Load today's matches by default
+        showMatches('today');
     </script>
 </body>
 </html>
