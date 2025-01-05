@@ -198,5 +198,42 @@
     <div class="footer">
         <p>&copy; 2025 Live Broadcast. All rights reserved.</p>
     </div>
+
+    <!-- Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script async src="https://platform.twitter.com/widgets.js"></script>
+    <script>
+        function openModal(type, source) {
+            const modal = document.getElementById('videoModal');
+            const modalBody = document.getElementById('modalBody');
+            modal.style.display = 'flex';
+
+            // Clear previous content
+            modalBody.innerHTML = '';
+
+            if (type === 'youtube') {
+                modalBody.innerHTML = <iframe src="${source}" allowfullscreen></iframe>;
+            } else if (type === 'twitter') {
+                twttr.widgets.createVideo(source, modalBody, { theme: 'dark' });
+            } else if (type === 'website') {
+                modalBody.innerHTML = <iframe src="${source}" allowfullscreen></iframe>;
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const modalBody = document.getElementById('modalBody');
+            modal.style.display = 'none';
+
+            // Clear modal content
+            modalBody.innerHTML = '';
+             }
+    </script>
 </body>
 </html>
