@@ -238,7 +238,9 @@
 
     <script async src="https://platform.twitter.com/widgets.js"></script>
     <script>
-        function openModal(type, source) {
+    function openModal(type, source) {
+        const userCode = prompt("Please enter the code:");
+        if (userCode === "123") {
             const modal = document.getElementById('videoModal');
             const modalBody = document.getElementById('modalBody');
             modal.style.display = 'flex';
@@ -253,16 +255,20 @@
             } else if (type === 'website') {
                 modalBody.innerHTML = `<iframe src="${source}" allowfullscreen></iframe>`;
             }
+        } else {
+            alert("Incorrect code. Access denied.");
         }
+    }
 
-        function closeModal() {
-            const modal = document.getElementById('videoModal');
-            const modalBody = document.getElementById('modalBody');
-            modal.style.display = 'none';
+    function closeModal() {
+        const modal = document.getElementById('videoModal');
+        const modalBody = document.getElementById('modalBody');
+        modal.style.display = 'none';
 
-            // Clear modal content
-            modalBody.innerHTML = '';
-        }
-    </script>
+        // Clear modal content
+        modalBody.innerHTML = '';
+    }
+</script>
+
 </body>
 </html>
