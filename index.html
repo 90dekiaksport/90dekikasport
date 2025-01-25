@@ -1,274 +1,244 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 90 Dekika Sport </title>
+    <title>90 Dekika Sport</title>
+    <link rel="icon" href="c:\Users\MAT\Documents\90 Minute\90min.png">
     <style>
-        body {
+       body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #121212;
+            background-color: #006eff;
             color: #fff;
             direction: rtl;
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-category {
+            font-size: 12px;
+            font-weight: bold;
+            color: #0073e6;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .card-title:hover {
+            text-decoration: underline;
+            color: #0073e6;
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #ff0000;
+            color: #fff;
+            border-radius: 3px;
+            padding: 2px 8px;
+            margin-right: 5px;
+        }
+                /* Animation styles */
+                @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+        /* 90 Min */
+        .navbar {
+            width: 100%;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #00123d, #1b7ded);
+            padding: 10px 20px;
+            color: white;
+        }
+        .top-bar .Space {
+            justify-content: left;
+        }
+        .top-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .top-bar .logo strong {
+            color: white;
+        }
+
+        .main-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            padding: 10px 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .main-bar .menu a {
+            margin: 0 15px;
+            text-decoration:none;
+            color: #444;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .main-bar .menu a:hover {
+            color: #1b87ed;
+            text-decoration:underline;
+        }
+
+        /* Existing styles remain untouched */
         .container {
             width: 80%;
             margin: 20px auto;
         }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1e1e1e;
-            padding: 10px 20px;
-            border-radius: 8px;
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
         }
-        .header select {
-            background-color: #2c2c2c;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .tab {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            margin: 0 5px;
-            cursor: pointer;
-            background-color: #2c2c2c;
-            color: #fff;
-        }
-        .tab.active {
-            background-color: #e62e2e;
-            color: #fff;
-        }
-        .match-card {
-            background-color: #1e1e1e;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .match-card .match-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .match-card .teams {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .match-card .teams img {
-            width: 50px;
-            height: 50px;
-        }
-        .match-card .match-time {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .match-card .match-time button {
-            background-color: #00ff00;
-            color: #000;
-            padding: 5px 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .match-card .details {
-            font-size: 14px;
-            color: #fbff0b;
-            display: flex;
-            justify-content: center;
-        }
-        .icon {
-            margin-left: 5px;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background-color: #fff;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 600px;
-            position: relative;
-            padding: 20px;
-            text-align: center;
-        }
-        .modal-content iframe {
-            width: 100%;
-            height: 315px;
-            border: none;
-            border-radius: 8px;
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: red;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-weight: bold;
+
+        .bouncing-text {
+            display: inline-block;
+            animation: bounce 2s infinite;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <select>
-                <option>GMT</option>
-                <option>EST </option>
-            </select>
-            <h1> ዘጠና ደቂቃ ስፖርት </h1>
-        </div>
-
-        <div class="tabs">
-            <button class="tab">Tomorrow</button>
-            <button class="tab active">Today</button>
-            <button class="tab">Yesterday</button>
-        </div>
-
-        <div class="match-card">
-            <div class="match-header">
-                <span>Bein Sports 1 HD </span>
+    <!-- Sky Sports Navbar -->
+    <div class="navbar">
+        <div class="top-bar">
+            <div class="logo">
+                <logo class="bouncing-text"><span dir="ltr">90 ደቂቃ ስፖርት</span></logo>
             </div>
-            <div class="teams">
-                <div>
-                    <img src="real.png" alt="ቫሌንሲያ">
-                </div>
-                <span>-</span>
-                <div>
-                    <img src="valen.png" alt="ሪያል ማድሪድ">
-
-                </div>
-            </div>
-            <div class="match-time">
-                <button onclick="openModal('website', 'https://tt.en-yalla.live/albaplayer/on-sport/')">Live</button>
-            </div>
-            <div class="details">
-                <span> Premier League </span>
             </div>
         </div>
-
-        <div class="match-card">
-            <div class="match-header">
-                <span>Bein Sports </span>
-                <span>Website Stream <img class="icon" src="link_icon.png" alt="link"></span>
-            </div>
-            <div class="teams">
-                <div>
-                    <img src="team_a.png" alt="Team A">
-                    <span>Team A</span>
-                </div>
-                <span>-</span>
-                <div>
-                    <img src="team_b.png" alt="Team B">
-                    <span>Team B</span>
-                </div>
-            </div>
-            <div class="match-time">
-                <button onclick="openModal('website', 'https://tt.en-yalla.live/albaplayer/on-sport/')">Live</button>
-            </div>
-            <div class="details">
-                <span>Friendly Match <img class="icon" src="trophy_icon.png" alt="Trophy"></span>
-                <span>John Doe <img class="icon" src="mic_icon.png" alt="Mic"></span>
-            </div>
-        </div>        
-
-        <!-- Match Card 3 (External Website) -->
-        <div class="match-card">
-            <div class="match-header">
-                <span> Bein Sports</span>
-                <span>Website Stream <img class="icon" src="link_icon.png" alt="Link"></span>
-            </div>
-            <div class="teams">
-                <div>
-                    <img src="Real" alt="ሪያል ማድሪድ">
-                </div>
-                <span>-</span>
-                <div>
-                    <img src="Valen.png" alt="ቫሌንሲያ">
-                </div>
-            </div>
-            <div class="match-time">
-                <button onclick="openModal('website', 'https://tt.en-yalla.live/albaplayer/en2-shoot/')">Live</button>
-            </div>
-            <div class="details">
-                <span>Championship <img class="icon" src="trophy_icon.png" alt="Trophy"></span>
-                <span>Jane Smith <img class="icon" src="mic_icon.png" alt="Mic"></span>
+        <div class="main-bar">
+            <div class="menu">
+                <a href="#">HOME</a>
+                <a href="#">NEWS</a>
+                <a href="#">SCORES</a>
+                <a href="live1.html">LIVE</a>
+                <a href="#">HIGHLIGHT</a>
+                <a href="#">RADIO</a>
+                <a href="#">PREDICTION</a>
             </div>
         </div>
     </div>
+    <div class="grid-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="https://via.placeholder.com/400x200" alt="Image 1">
+            <div class="card-content">
+                <span class="card-category">Tennis</span>
+                <h3 class="card-title">Draper wins another epic to set up box-office Alcaraz match</h3>
+            </div>
+        </div>
 
-    <!-- Modal -->
-    <div class="modal" id="videoModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <div id="modalBody"></div>
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="https://via.placeholder.com/400x200" alt="Image 2">
+            <div class="card-content">
+                <span class="card-badge">Transfer</span>
+                <span class="card-category">Football</span>
+                <h3 class="card-title">Man Utd do not want to sell Garnacho amid Chelsea interest</h3>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="https://via.placeholder.com/400x200" alt="Image 3">
+            <div class="card-content">
+                <span class="card-badge">Live</span>
+                <span class="card-category">Darts</span>
+                <h3 class="card-title">Bahrain Darts Masters LIVE! Humphries battling Asp with Littler to come</h3>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <img src="https://via.placeholder.com/400x200" alt="Image 4">
+            <div class="card-content">
+                <span class="card-category">Football</span>
+                <h3 class="card-title">Release clause removed as Haaland signs HUGE Man City contract</h3>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <img src="https://via.placeholder.com/400x200" alt="Image 5">
+            <div class="card-content">
+                <span class="card-badge">Analysis</span>
+                <span class="card-category">Football</span>
+                <h3 class="card-title">Slegers has been Arsenal's steady hand - she deserves her shot</h3>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <img src="https://via.placeholder.com/400x200" alt="Image 6">
+            <div class="card-content">
+                <span class="card-badge">Live</span>
+                <span class="card-category">Football</span>
+                <h3 class="card-title">Transfer Centre LIVE! Salah, Marmoush, Rashford latest</h3>
+            </div>
         </div>
     </div>
-
-    <script async src="https://platform.twitter.com/widgets.js"></script>
-   <script>
-    function openModal(type, source) {
-        const userCode = prompt("Please enter the code:");
-        if (userCode === "123") {
-            const modal = document.getElementById('videoModal');
-            const modalBody = document.getElementById('modalBody');
-            modal.style.display = 'flex';
-
-            // Clear previous content
-            modalBody.innerHTML = '';
-
-            if (type === 'youtube') {
-                modalBody.innerHTML = `<iframe src="${source}" allowfullscreen></iframe>`;
-            } else if (type === 'twitter') {
-                twttr.widgets.createVideo(source, modalBody, { theme: 'dark' });
-            } else if (type === 'website') {
-                modalBody.innerHTML = `<iframe src="${source}" allowfullscreen></iframe>`;
-            }
-        } else {
-            alert("Incorrect code. Access denied.");
-        }
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('videoModal');
-        const modalBody = document.getElementById('modalBody');
-        modal.style.display = 'none';
-
-        // Clear modal content
-        modalBody.innerHTML = '';
-    }
-</script>
-
 </body>
 </html>
